@@ -1,6 +1,6 @@
 import cv2
 
-body_classifier = cv2.CascadeClassifier('haarcascade_fullbody.xml')
+body_classifier = cv2.CascadeClassifier('./haarcascade_fullbody.xml')
 camera = cv2.VideoCapture(0)
 
 while True:
@@ -9,7 +9,7 @@ while True:
     body = body_classifier.detectMultiScale(gray, 1.3, 5)
 
     for (x, y, w, h) in body:
-        cv2.rectangle(img, (x, y), (x + w, y + h), (255, 255, 0), 2)
+        cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
         roi_gray = gray[y:y + h, x:x + w]
         roi_color = img[y:y + h, x:x + w]
 
